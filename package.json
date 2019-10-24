@@ -62,6 +62,7 @@
     "lint-ts": "tslint 'lib/**/*.ts' 'example/typescript/*.ts' --exclude 'lib/**/*.d.ts' 'test/**/*.ts' --exclude 'test/**/*.d.ts' 'doc-gen/**/*.ts'",
     "lint-md": "remark -u preset-lint-recommended .",
     "lint": "npm run lint-md && npm run lint-ts",
+    "test-js": "mocha test/test-*.js",
     "test": "mocha --require ts-node/register --require source-map-support/register --full-trace test/test-*.ts",
     "build": "npm run clean && npm run compile && npm run doc-gen",
     "start": "npm-run-all compile lint cover-test",
@@ -109,9 +110,6 @@
       "chrome/latest",
       "safari/latest"
     ]
-  },
-  "engines": {
-    "node": ">=8"
   },
   "repository": {
     "type": "git",

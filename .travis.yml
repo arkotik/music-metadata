@@ -1,23 +1,37 @@
 language: node_js
-node_js:
- - "8"
- - "10"
- - "11"
- - "12"
-install:
-- yarn install
-script:
-- yarn run lint
-- yarn run compile
-- yarn run test
+cache:
+  yarn: true
+  directories:
+    - lib
+    - test
 
 jobs:
   include:
-    - stage: after_success
+    - stage: install
+      node_js: "12"
+      script: yarn install
+    - stage: build
+      node_js: "12"
       script:
+      - yarn run compile
+    - stage: test
+      node_js: "6"
+      script: yarn run test-js
+    - stage: test
+      node_js: "8"
+      script: yarn run test-js
+    - stage: test
+      node_js: "10"
+      script: yarn run test-js
+    - stage: test
+      node_js: "12"
+      script: yarn run test-js
+    - stage: after_success
+      node_js: "10"
+      install:
       - yarn install
+      script:
       - yarn run test-coverage
       - yarn run send-coveralls
       - yarn add -D codacy-coverage
       - yarn run send-codacy
-      node_js: 10
