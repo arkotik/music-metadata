@@ -1,5 +1,5 @@
 import { assert } from 'chai';
-import * as mm from '../lib';
+import * as mm from 'music-metadata';
 import * as path from 'path';
 
 describe('Asynchronous observer updates', () => {

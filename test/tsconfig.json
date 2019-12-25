@@ -1,7 +1,11 @@
 {
   "extends": "../tsconfig.json",
   "compilerOptions": {
-    "types": ["mocha"]
+    "types": ["mocha"],
+    "baseUrl": ".",
+    "paths": {
+      "music-metadata": ["../lib"]
+    }
   }
 }
 
